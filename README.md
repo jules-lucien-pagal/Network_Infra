@@ -19,12 +19,12 @@ Dans ce lab, il est question de déployer une infrastructure LAN & WAN
 - VRFs , RT , RD pour instancier et labeliser le trafic venant des différents Clients CEs
 
 Les Users ont accès à Internet via Palo Alto et la matrice de flux est définie comme suit : 
-Users -> SW_Coeur -> Palo -> ISP -> Internet
+Users -> SW_Coeur -> Proxy -> Palo -> ISP -> Internet
 La communicatio entre un User du Site A et Site B via le BACKBONE MPLS est définit comme suit :
 Site A : Users -> SW_Coeur -> CE -> PEs [Backbone]   <---> Site B : CE -> SW_Coeur -> Users ; Et inversement
 
 Sur le Site A :
-- Les 2 pare-feux en aval sont en cluster Active/Passive pour une redondance et le filtrage in-out
+- Les 2 pare-feux en aval sont en cluster Active/Passive pour une redondance HA et le filtrage in-out
 - Les routeurs ISP simulent les interco vers les ISP via les IP publiques
 - Les Switchs WAN segmentent le flux in-out entre l'intérier et l'extérieur en ne laissant passer que les Vlans autorisées à sortir 
 - Le SW_Core fait de l'inter-vlan routing
